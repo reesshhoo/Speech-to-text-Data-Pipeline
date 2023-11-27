@@ -18,13 +18,13 @@ def convert_pdf_to_text(input_dir, output_dir):
                 for page in pdf_reader.pages:
                     text += page.extract_text()
 
-                # Convert text to lowercase
+                
                 text = text.lower()
 
-                # Remove punctuation
+                
                 text = text.translate(str.maketrans('', '', punctuation))
 
-                # Convert digits to words
+                
                 words = []
                 for word in text.split():
                     if word.isdigit():
@@ -33,13 +33,13 @@ def convert_pdf_to_text(input_dir, output_dir):
 
                 cleaned_text = ' '.join(words)
 
-                # Write cleaned text to a new file
+                
                 with open(output_path, "w", encoding='utf-8') as output_file:
                     output_file.write(cleaned_text[130:])
 
                 print(f"Extracted text from {file_name} and saved as {output_text_file}")
 
-# Replace with your input and output directories
+
 input_directory = input("Enter path to input directory containing pdf files: ")
 output_directory = input("Enter path to output directory: ")
 

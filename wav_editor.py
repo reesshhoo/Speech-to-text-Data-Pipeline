@@ -16,7 +16,7 @@ def cut_last_30_seconds(input_dir, output_dir):
 
             print(f"Trimmed {file_name} and saved to {output_path}")
 
-# Replace with your input and output directories
+
 input_directory = input("Enter the path of the directory storing wav files: ")
 output_directory = input_directory
 cut_last_30_seconds(input_directory, output_directory)

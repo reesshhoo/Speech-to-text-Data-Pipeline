@@ -2,7 +2,6 @@ import os
 import wave
 import json
 
-# Function to get duration of a WAV file
 def get_wav_duration(file_path):
     with wave.open(file_path, 'rb') as audio_file:
         frame_rate = audio_file.getframerate()
@@ -10,7 +9,7 @@ def get_wav_duration(file_path):
         duration = float(num_frames) / frame_rate
         return round(duration, 2)
 
-# Paths to your folders
+
 audio_folder = input('Enter the path containing the audio files: ')
 text_folder = input('Enter the path containing the text files: ')
 output_manifest_file = 'train_manifest.jsonl'
