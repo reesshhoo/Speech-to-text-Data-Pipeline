@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if ! command -v parallel &> /dev/null; then
   echo "GNU Parallel is not installed. Installing..."
   sudo apt-get update
@@ -13,14 +12,14 @@ fi
 
 
 read -p "Enter path to the directory containing audio files: " input_dir
-read -p "Enter path to the output directory to store the wav files: " output_dir
+read -p "Enter path to the output directory: " output_dir
+read -p "Enter the number of CPUs to use for parallel processing: " num_cpus
 
 
 if [ ! -d "$input_dir" ]; then
   echo "Input directory does not exist. Please provide a valid path."
   exit 1
 fi
-
 
 if [ ! -d "$output_dir" ]; then
   mkdir -p "$output_dir"
@@ -30,7 +29,7 @@ fi
 export output_dir
 
 
-find "$input_dir" -type f | parallel bash -c '
+find "$input_dir" -type f | parallel -j"$num_cpus" bash -c '
   convert_to_wav() {
     file="$1"
     filename=$(basename -- "$file")
