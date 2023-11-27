@@ -1,0 +1,4 @@
+yt-dlp
+pydub
+PyPDF2
+num2words
